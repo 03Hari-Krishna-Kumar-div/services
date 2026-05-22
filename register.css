@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #050b18;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+/* BACKGROUND */
+
+.background {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(0, 174, 255, 0.20), transparent 35%), linear-gradient(135deg, #020817, #071224, #020817);
+}
+
+
+/* FORM */
+
+.register-container {
+    position: relative;
+    z-index: 2;
+}
+
+.register-form {
+    width: 420px;
+    padding: 42px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.register-form h1 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.register-form input {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+.register-form input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.register-form button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 999px;
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    left: 20px;
+    bottom: -100px;
+    padding: 18px 24px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: .4s;
+}
+
+.toast.show {
+    bottom: 20px;
+}

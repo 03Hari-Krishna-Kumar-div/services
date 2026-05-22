@@ -1,0 +1,27 @@
+https://edufotia.com/
+
+fonts:
+https://fonts.google.com/specimen/Instrument+Serif?preview.script=Latn
+
+https://fonts.google.com/specimen/Outfit?query=Outfit&preview.script=Latn
+
+STYLE:
+Using the grid
+
+tosts:
+exact trasparency look at the boot left side 
+
+tooltip: from boot strap
+
+icons:
+1. https://fontawesome.com/icons/packs/brands
+2.
+https://icofont.com/
+(multilingual)
+3. https://icofont.com/
+(rupee)
+
+
+
+add reviews at the bottom 
+
