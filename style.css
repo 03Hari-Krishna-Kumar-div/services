@@ -177,23 +177,10 @@ body {
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(18px) saturate(180%);
-    -webkit-backdrop-filter: blur(18px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 4px 12px rgba(0, 0, 0, 0.18);
     z-index: 1;
-    /* SMOOTH IOS SPRING */
-    transition: transform 820ms cubic-bezier(0.16, 1, 0.3, 1), width 820ms cubic-bezier(0.16, 1, 0.3, 1), background .4s ease, box-shadow .4s ease;
-}
-
-
-/* LIQUID LIGHT */
-
-.nav-pill::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient( 180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.02));
+    transition: transform 820ms cubic-bezier(0.16, 1, 0.3, 1), width 820ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 
@@ -214,9 +201,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: transform .35s ease, border .35s ease;
 }
-
-
-/* GRADIENT POP */
 
 .cta-btn::before {
     content: "";
@@ -305,6 +289,31 @@ body {
     text-decoration: none;
     color: #fff;
     font-size: 1.2rem;
+}
+
+
+/* =========================
+   MENU BACKDROP
+========================= */
+
+.menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    z-index: 2500;
+}
+
+.menu-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.no-scroll {
+    overflow: hidden;
 }
 
 
@@ -399,20 +408,6 @@ body {
 
 
 /* =========================
-   SECTIONS
-========================= */
-
-.section {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
-    font-weight: 800;
-}
-
-
-/* =========================
    SERVICES SECTION
 ========================= */
 
@@ -445,7 +440,7 @@ body {
 }
 
 .services-title {
-    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-size: clamp(2.8rem, 6vw, 5rem);
     line-height: 1;
     font-weight: 800;
     letter-spacing: -0.05em;
@@ -466,7 +461,8 @@ body {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 38px;
+    gap: 42px;
+    align-items: start;
 }
 
 
@@ -474,32 +470,19 @@ body {
 
 .service-card {
     position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     border-radius: 34px;
+    overflow: visible;
     background: rgba(255, 255, 255, 0.045);
     backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    min-height: 520px;
-    transform-style: preserve-3d;
-    transition: transform .9s cubic-bezier(.175, .885, .32, 1.275), border-color .4s ease;
+    min-height: 620px;
+    transition: transform .9s cubic-bezier(.175, .885, .32, 1.275), border-color .4s ease, box-shadow .5s ease;
     will-change: transform;
     cursor: pointer;
-}
-
-
-/* LIQUID LIGHT */
-
-.card-glow {
-    position: absolute;
-    inset: -30%;
-    background: radial-gradient( circle at center, rgba(0, 180, 255, 0.18), transparent 40%);
-    opacity: 0;
-    transition: .6s;
-    filter: blur(60px);
-}
-
-.service-card:hover .card-glow {
-    opacity: 1;
 }
 
 
@@ -507,15 +490,17 @@ body {
 
 .card-image {
     position: relative;
-    height: 320px;
+    height: 340px;
+    min-height: 340px;
     overflow: hidden;
+    border-radius: 34px 34px 0 0;
 }
 
 .card-image::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient( to top, rgba(5, 11, 24, 0.95), transparent 55%);
+    background: linear-gradient( to top, rgba(5, 11, 24, 0.88), transparent 55%);
 }
 
 .card-image img {
@@ -533,59 +518,69 @@ body {
 /* CONTENT */
 
 .card-content {
-    position: relative;
-    padding: 34px;
-    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    padding: 30px;
+    min-height: 220px;
 }
 
 .card-index {
     color: rgba(255, 255, 255, 0.35);
-    font-size: .85rem;
+    font-size: .82rem;
     letter-spacing: .2em;
 }
 
 .card-content h3 {
     font-size: 2rem;
-    margin: 16px 0 18px;
+    margin: 14px 0;
     letter-spacing: -0.04em;
 }
 
 .card-content p {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.68);
     line-height: 1.7;
+    margin-top: auto;
 }
 
 
-/* HOVER CONTENT */
+/* EXPAND PANEL */
 
-.card-hover {
-    position: absolute;
-    left: 0;
-    bottom: -100%;
-    width: 100%;
-    padding: 34px;
-    background: linear-gradient( to top, rgba(4, 10, 20, 0.96), rgba(4, 10, 20, 0.78));
-    backdrop-filter: blur(30px);
-    transition: bottom .7s cubic-bezier(.175, .885, .32, 1.275);
-    z-index: 4;
+.card-expand {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 30px;
+    transition: max-height .8s cubic-bezier(.175, .885, .32, 1.275), opacity .45s ease, padding .6s ease;
+    border-top: 1px solid rgba(255, 255, 255, 0);
+    background: linear-gradient( to bottom, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.045));
+    border-radius: 0 0 34px 34px;
 }
 
-.service-card:hover .card-hover {
-    bottom: 0;
+.service-card:hover .card-expand {
+    max-height: 340px;
+    opacity: 1;
+    padding: 28px 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.card-hover ul {
+
+/* LIST */
+
+.card-expand ul {
     list-style: none;
 }
 
-.card-hover li {
+.card-expand li {
     position: relative;
     padding-left: 24px;
-    margin-bottom: 18px;
-    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.84);
+    line-height: 1.6;
 }
 
-.card-hover li::before {
+.card-expand li::before {
     content: "";
     position: absolute;
     left: 0;
@@ -601,31 +596,9 @@ body {
 /* HOVER */
 
 .service-card:hover {
-    transform: translateY(-16px) rotateX(5deg) rotateY(-4deg);
+    transform: translateY(-10px) scale(1.015);
     border-color: rgba(120, 200, 255, 0.24);
-}
-
-
-/* RESPONSIVE */
-
-@media(max-width:768px) {
-    .services-section {
-        padding: 100px 22px;
-    }
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    .service-card {
-        min-height: auto;
-    }
-    .card-hover {
-        position: relative;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.03);
-    }
-    .service-card:hover {
-        transform: none;
-    }
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
 
@@ -644,7 +617,25 @@ body {
     .hero-actions {
         flex-direction: column;
     }
-    .section {
-        font-size: 2.5rem;
+}
+
+@media(max-width:768px) {
+    .services-section {
+        padding: 100px 22px;
+    }
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .card-expand {
+        max-height: none;
+        opacity: 1;
+        padding: 28px 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .service-card:hover {
+        transform: none;
+    }
+    .hero-title {
+        font-size: 3.4rem;
     }
 }
