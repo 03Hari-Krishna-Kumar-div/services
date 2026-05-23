@@ -181,13 +181,32 @@ sendLinkBtn.addEventListener("click", async() => {
         return;
     }
 
+    // const isLocalhost =
+
+    //     window.location.hostname === "127.0.0.1" ||
+
+    //     window.location.hostname === "localhost";
+
+    // const actionCodeSettings = {
+
+    //     url: isLocalhost
+
+    //         ?
+
+    //         "http://127.0.0.1:5500/register.html"
+
+    //         :
+
+    //         "https://03hari-krishna-kumar-div.github.io/services/register.html",
+
+    //     handleCodeInApp: true
+    // };
     const actionCodeSettings = {
 
-        url: "http://127.0.0.1:5500/register.html",
+        url: "https://03hari-krishna-kumar-div.github.io/services/register.html",
 
         handleCodeInApp: true
     };
-
     try {
 
         await sendSignInLinkToEmail(
