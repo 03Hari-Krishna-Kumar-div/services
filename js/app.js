@@ -6,10 +6,10 @@ new TypedText("#typed", [
 
     // "SERVERS",
     "SOFTWARE",
-    "AI SYSTEMS",
+    "AI Integration & Development",
     "WEBSITES DEVELOPMENT ",
     "SEO",
-    "SOCIAL MEDIO",
+    "SOCIAL MEDIA",
     "APPLICATION DEVELOPMENT",
     "CLOUD SERVICES"
 
