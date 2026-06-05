@@ -141,3 +141,82 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+
+/*About us */
+const counters = document.querySelectorAll(".counter");
+
+const startCounter = () => {
+
+    counters.forEach(counter => {
+
+        const target = +counter.dataset.target;
+
+        let count = 0;
+
+        const increment = target / 100;
+
+        const updateCount = () => {
+
+            if(count < target){
+
+                count += increment;
+
+                counter.innerText =
+                Math.ceil(count);
+
+                requestAnimationFrame(updateCount);
+
+            }else{
+
+                counter.innerText = target + "+";
+            }
+        };
+
+        updateCount();
+    });
+};
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            startCounter();
+
+            observer.disconnect();
+        }
+    });
+
+},{threshold:0.4});
+
+/* Mobile Auto Slider */
+
+const slides = document.querySelectorAll(".slide");
+
+let currentSlide = 0;
+
+function showSlide(index){
+
+    slides.forEach(slide=>{
+        slide.classList.remove("active");
+    });
+
+    slides[index].classList.add("active");
+}
+
+function nextSlide(){
+
+    currentSlide++;
+
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+
+    showSlide(currentSlide);
+}
+
+if(window.innerWidth <= 768){
+
+    setInterval(nextSlide, 300);
+}
