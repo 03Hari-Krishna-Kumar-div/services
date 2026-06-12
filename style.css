@@ -601,6 +601,10 @@ body.no-scroll {
     box-shadow: 0 0 14px #5ad6ff;
 }
 
+.card-expand a {
+     color: #fff;
+}
+
 
 /* HOVER */
 
@@ -668,6 +672,15 @@ body.no-scroll {
 
 .contact-item a:hover {
     color: #fff;
+}
+
+.contact-item a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: #25D366; /* WhatsApp green */
 }
 
 .direction-btn {
@@ -928,11 +941,11 @@ body.no-scroll {
     background:#ffffff;
 }
 
-.about-container{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:60px;
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
 }
 
 .about-image{
@@ -1159,4 +1172,22 @@ body.no-scroll {
     .section-title{
         font-size:30px;
     }
+}
+
+:root{
+    --bg:#020d2b;
+    --text:#ffffff;
+    --card:#0d2d67;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+}
+
+.light-mode{
+    --bg:#ffffff;
+    --text:#111111;
+    --card:#f3f6ff;
 }
